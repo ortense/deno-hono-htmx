@@ -39,9 +39,9 @@ export function Home() {
           <p>
             This page looks very simple, because it is, but to be displayed the
             server accesses a database (Deno kv), makes a request to the github
-            API, serves static files from the file system (without a cache
-            system) and renders jsx components (on the server) then the
-            generated HTML is sent to your browser.
+            API, serves static files from the file system (without CDN) and
+            renders jsx components (on the server) then the generated HTML is
+            sent to your browser.
           </p>
           <p>
             If you click on "+" or "-" button a new request is made to the
