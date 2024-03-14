@@ -33,7 +33,12 @@ export async function GitHub({ path }: { path: string }) {
           href={repo.url}
           alt="github repository"
         >
-          <img src="/static/img/github.png" alt="github icon" />
+          <img
+            src="/static/img/github.png"
+            width="18"
+            height="18"
+            alt="github icon"
+          />
           /{repo.name}
         </a>
       </p>

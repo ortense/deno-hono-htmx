@@ -40,7 +40,7 @@ export function WithHTMX({ children }: { children: unknown }) {
           content="A experiment with Deno, Hono and htmx"
         />
         <meta name="keywords" content="deno, hono, htmx, typescript" />
-        <meta name="viewprt" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/static/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/static/apple-touch-icon.png" />
       </head>

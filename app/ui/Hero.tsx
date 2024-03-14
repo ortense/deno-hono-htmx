@@ -14,11 +14,11 @@ const style = css`
 export function Hero() {
   return (
     <h1 class={cx("Hero", style)}>
-      <img src="/static/img/deno.png" alt="Deno" />
+      <img src="/static/img/deno.png" width="368" height="75" alt="Deno" />
       <span>+</span>
-      <img src="/static/img/hono.png" alt="Hono" />
+      <img src="/static/img/hono.png" width="286" height="75" alt="Hono" />
       <span>+</span>
-      <img src="/static/img/htmx.png" alt="htmx" />
+      <img src="/static/img/htmx.png" width="361" height="75" alt="htmx" />
     </h1>
   );
 }
