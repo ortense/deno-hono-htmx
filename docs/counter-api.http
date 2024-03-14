@@ -1,0 +1,11 @@
+# Get CounterDisplay with current value
+# GET http://localhost:8000/counter
+
+# Increment counter value and get the updated CounterDispaly
+# POST http://localhost:8000/counter/increment
+
+# Decrement counter value and get the updated CounterDispaly
+#POST http://localhost:8000/counter/decrement
+
+# CounterDisplay render result should be like: 
+# <span class="CounterDisplay">0</span>
