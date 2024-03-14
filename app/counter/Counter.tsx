@@ -3,7 +3,7 @@ import { openKv } from "../kv.ts";
 import { CounterDecrementButton } from "./CounterDecrementButton.tsx";
 import { CounterIncrementButton } from "./CounterIncrementButton.tsx";
 import { CounterDisplay } from "./CounterDisplay.tsx";
-import { value } from "./counter.repository.ts";
+import { getValue } from "./counter.repository.ts";
 
 const style = css`
   display: flex;
@@ -15,12 +15,11 @@ const style = css`
 `;
 
 export async function Counter() {
-  const kv = await openKv();
-  const val = await value(kv);
+  const value = await openKv().then(getValue);
   return (
     <section class={cx("Counter", style)}>
       <CounterDecrementButton />
-      <CounterDisplay value={val} />
+      <CounterDisplay value={value} />
       <CounterIncrementButton />
     </section>
   );

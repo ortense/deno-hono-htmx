@@ -1,12 +1,12 @@
 const COUNTER_VALUE = ["COUNTER", "value"] as const;
 
-export async function value(kv: Deno.Kv) {
+export async function getValue(kv: Deno.Kv) {
   const { value } = await kv.get<number>(COUNTER_VALUE);
   return value as number;
 }
 
 export async function increment(kv: Deno.Kv) {
-  const current = await value(kv);
+  const current = await getValue(kv);
   const updated = current + 1;
 
   await kv.set(COUNTER_VALUE, updated);
@@ -15,7 +15,7 @@ export async function increment(kv: Deno.Kv) {
 }
 
 export async function decrement(kv: Deno.Kv) {
-  const current = await value(kv);
+  const current = await getValue(kv);
   const updated = current - 1;
 
   await kv.set(COUNTER_VALUE, updated);
