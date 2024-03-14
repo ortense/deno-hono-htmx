@@ -9,7 +9,7 @@ await openKv();
 export const server = new Hono();
 
 server.use(compress());
-
 server.use("/static/*", serveStatic({ root: "./" }));
+
 server.get("/", RenderHome);
 server.route("/counter", counter);

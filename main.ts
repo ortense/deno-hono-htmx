@@ -1,3 +1,3 @@
-import { server } from "./app/server.tsx";
+import { server } from "./app/server.ts";
 
 Deno.serve(server.fetch);
