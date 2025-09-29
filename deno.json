@@ -1,19 +1,18 @@
 {
-  "$schema": "https://deno.land/x/deno@v1.41.0/cli/schemas/config-file.v1.json",
   "version": "1.0.0",
   "imports": {
-    "hono": "https://deno.land/x/hono@v4.1.0/mod.ts",
-    "hono/middleware": "https://deno.land/x/hono@v4.1.0/middleware.ts",
-    "hono/jsx": "https://deno.land/x/hono@v4.1.0/jsx/index.ts",
-    "hono/jsx/jsx-runtime": "https://deno.land/x/hono@v4.1.0/jsx/jsx-runtime.ts",
-    "hono/helper": "https://deno.land/x/hono@v4.1.0/helper.ts"
+    "hono": "https://deno.land/x/hono@v4.3.0/mod.ts",
+    "hono/middleware": "https://deno.land/x/hono@v4.3.0/middleware.ts",
+    "hono/jsx": "https://deno.land/x/hono@v4.3.0/jsx/index.ts",
+    "hono/jsx/jsx-runtime": "https://deno.land/x/hono@v4.3.0/jsx/jsx-runtime.ts",
+    "hono/helper": "https://deno.land/x/hono@v4.3.0/helper.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx"
   },
   "tasks": {
-    "start": "deno run --unstable --allow-net --allow-read main.ts",
-    "watch": "deno run --watch --unstable --allow-net --allow-read main.ts"
+    "start": "deno run --unstable --allow-net --allow-read --unstable-kv main.ts",
+    "watch": "deno run --watch --unstable --allow-net --allow-read --unstable-kv main.ts"
   }
 }

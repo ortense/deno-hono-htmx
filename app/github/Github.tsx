@@ -1,5 +1,6 @@
 import { css, cx } from "hono/helper";
 import { getRepo } from "./api.ts";
+import type { ServerTiming } from "../middlewares/server-timing.ts";
 
 const style = css`
   display: flex;
@@ -20,8 +21,10 @@ const lintStyle = css`
   }
 `;
 
-export async function GitHub({ path }: { path: string }) {
-  const repo = await getRepo(path);
+export async function GitHub(
+  { path, timing }: { path: string; timing?: ServerTiming },
+) {
+  const repo = await getRepo(path, timing);
 
   return (
     <section class={cx("Github", style)}>

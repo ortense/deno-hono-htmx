@@ -4,6 +4,8 @@ import { WithHTMX } from "../layouts/WithHTMX.tsx";
 import { Counter } from "../counter/Counter.tsx";
 import { Hero } from "../ui/Hero.tsx";
 import { GitHub } from "../github/Github.tsx";
+import type { ServerTiming } from "../middlewares/server-timing.ts";
+import "../types/hono.ts";
 
 const style = css`
   min-height: 100vh;
@@ -14,27 +16,29 @@ const style = css`
   justify-content: center;
   align-items: center;
   font-size: 1.8rem;
-  h1 { font-size: 6rem }
+  h1 {
+    font-size: 6rem;
+  }
 
-.description {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  font-size: 1.6rem;
-  font-family: monospace;
-  max-width: 600px;
-  border-left: .5rem solid #f8f8f8;
-  padding-left: 1rem;
-}
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-size: 1.6rem;
+    font-family: monospace;
+    max-width: 600px;
+    border-left: 0.5rem solid #f8f8f8;
+    padding-left: 1rem;
+  }
 `;
 
-export function Home() {
+export function Home({ timing }: { timing?: ServerTiming }) {
   return (
     <WithHTMX>
       <section id="Home" class={style}>
         <Hero />
-        <GitHub path="ortense/deno-hono-htmx" />
-        <Counter />
+        <GitHub path="ortense/deno-hono-htmx" timing={timing} />
+        <Counter timing={timing} />
         <section class="description">
           <p>
             This page looks very simple, because it is, but to be displayed the
@@ -56,5 +60,11 @@ export function Home() {
 }
 
 export function RenderHome(ctx: Context) {
-  return ctx.html(<Home />);
+  const timing = ctx.get("serverTiming");
+  const endRenderTiming = timing?.startTiming("render-home");
+
+  const html = <Home timing={timing} />;
+  endRenderTiming?.();
+
+  return ctx.html(html);
 }
