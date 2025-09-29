@@ -1,13 +1,22 @@
+import type { ServerTiming } from "../middlewares/server-timing.ts";
+
 export type GithubRepo = {
   name: string;
   url: string;
   description: string;
 };
 
-export async function getRepo(path: string): Promise<GithubRepo> {
+export async function getRepo(
+  path: string,
+  timing?: ServerTiming,
+): Promise<GithubRepo> {
+  const endTiming = timing?.startTiming("github-api");
+
   const url = `https://api.github.com/repos/${path}`;
   const response = await fetch(url);
   const data = await response.json();
+
+  endTiming?.();
 
   if (!response.ok) {
     return {

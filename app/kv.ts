@@ -1,6 +1,10 @@
+import type { ServerTiming } from "./middlewares/server-timing.ts";
+
 let kv: Deno.Kv;
 
-export async function openKv() {
+export async function openKv(timing?: ServerTiming) {
+  const endOpenKvTiming = timing?.startTiming("kv-open");
+
   if (!kv) {
     kv = await Deno.openKv().catch((err) => {
       console.error(err);
@@ -8,5 +12,6 @@ export async function openKv() {
     });
   }
 
-  return kv;
+  endOpenKvTiming?.();
+  return { kv, timing };
 }
